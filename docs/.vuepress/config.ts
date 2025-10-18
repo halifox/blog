@@ -16,7 +16,7 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
-  title: 'My Vuepress Site',
+  title: 'Halifox\'s Blog',
   description: '',
 
   head: [

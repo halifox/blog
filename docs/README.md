@@ -7,9 +7,9 @@ config:
     full: true
     background: tint-plate
     hero:
-      name: Theme Plume
-      tagline: VuePress Next Theme
-      text: 一个简约的，功能丰富的 vuepress 文档&博客 主题
+      name: Halifox's Blog
+      tagline: 
+      text: Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.
       actions:
         -
           theme: brand
@@ -18,5 +18,5 @@ config:
         -
           theme: alt
           text: Github →
-          link: https://github.com/pengzhanbo/vuepress-theme-plume
+          link: https://github.com/halifox
 ---
