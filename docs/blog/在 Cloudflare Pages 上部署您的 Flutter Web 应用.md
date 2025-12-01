@@ -6,7 +6,7 @@ tags:
   - Cloudflare
 ---
 
-原帖:https://sarthaknp.medium.com/deploying-your-flutter-web-app-on-cloudflare-pages-0d4a30caa99f
+>原帖:https://sarthaknp.medium.com/deploying-your-flutter-web-app-on-cloudflare-pages-0d4a30caa99f
 
 欢迎各位 Flutter 开发者！🚀 我们将开启一段激动人心的旅程，助您将 Flutter Web 应用部署到支持 CI/CD 的 Cloudflare Pages
 上。整个过程只需不到五分钟。让我们一起深入探索，让您的应用脱颖而出！

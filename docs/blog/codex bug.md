@@ -6,7 +6,7 @@ tags:
   - codex
 ---
 
-解决方案原帖: https://linux.do/t/topic/1019070
+>原帖: https://linux.do/t/topic/1019070
 
 查看 1455 端口是否被排除：
 
