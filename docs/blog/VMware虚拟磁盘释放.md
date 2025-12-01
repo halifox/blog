@@ -2,6 +2,8 @@
 title: VMware虚拟磁盘释放
 createTime: 2025/12/01 17:29:49
 permalink: /blog/p1nz9lvq/
+tags:
+  - VMware
 ---
 
 > 原帖: https://zhuanlan.zhihu.com/p/141735961

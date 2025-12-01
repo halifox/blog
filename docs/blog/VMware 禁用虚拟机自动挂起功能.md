@@ -2,6 +2,8 @@
 title: VMware 禁用虚拟机自动挂起功能
 createTime: 2025/12/01 17:24:10
 permalink: /blog/f2qwq9di/
+tags:
+  - VMware
 ---
 
 > 原帖: https://blog.csdn.net/qq_45392321/article/details/117332517

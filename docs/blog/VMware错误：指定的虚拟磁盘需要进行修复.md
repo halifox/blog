@@ -2,6 +2,8 @@
 title: VMware错误：指定的虚拟磁盘需要进行修复
 createTime: 2025/12/01 17:23:25
 permalink: /blog/h2uyfesi/
+tags:
+  - VMware
 ---
 >原帖: https://www.cnblogs.com/fumin0622/p/14835668.html
 

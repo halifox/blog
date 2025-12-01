@@ -2,6 +2,8 @@
 title: VMware 磁盘扩容
 createTime: 2025/12/01 17:20:45
 permalink: /blog/5w36ovkb/
+tags:
+  - VMware
 ---
 当在VMware里使用Linux的时候 需要对磁盘进行扩容
 
