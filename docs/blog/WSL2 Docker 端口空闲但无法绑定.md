@@ -1,10 +1,14 @@
 ---
-title: WSL2 + Docker 端口空闲但无法绑定
+title: WSL2 Docker 端口空闲但无法绑定
 createTime: 2025/11/04 20:40:15
 permalink: /blog/2bsm802m/
 tags:
   - wsl
+  - docker
 ---
+
+## 情景
+
 在 Windows 使用 **WSL2 + Docker** 时，有时会遇到容器无法绑定 **1883 端口**（例如 MQTT 服务端口）的问题。
 奇怪的是，使用以下命令检查后发现该端口并没有被占用：
 
