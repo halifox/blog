@@ -2,6 +2,9 @@
 title: Nextjs笔记
 createTime: 2025/11/24 16:45:42
 permalink: /blog/ixxa4sj1/
+tags:
+  - nodejs
+  - nextjs
 ---
 
 ## 动态路由 + 静态生成

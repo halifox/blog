@@ -2,6 +2,8 @@
 title: 在 Cloudflare Pages 上部署您的 Flutter Web 应用
 createTime: 2025/11/28 11:00:36
 permalink: /blog/cynb75iz/
+tags:
+  - Cloudflare
 ---
 
 原帖:https://sarthaknp.medium.com/deploying-your-flutter-web-app-on-cloudflare-pages-0d4a30caa99f

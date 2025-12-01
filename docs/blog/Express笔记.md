@@ -2,6 +2,9 @@
 title: Express笔记
 createTime: 2025/11/24 15:17:40
 permalink: /blog/o4u5225d/
+tags:
+  - nodejs
+  - express
 ---
 
 ## 全局异步路由异常处理

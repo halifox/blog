@@ -2,6 +2,8 @@
 title: Flutter 公告渠道
 createTime: 2025/11/28 10:05:48
 permalink: /blog/fvvysa2c/
+tags:
+  - flutter
 ---
 
 ## 重要提交记录
