@@ -20,13 +20,26 @@ tags:
 
 引入了事件 (Events) -> 状态 (States) 的严格分离架构，非常适合复杂的大型应用。Cubit 是 Bloc 后来推出的更轻量级版本。
 
+优点: 企业级标准；逻辑与 UI 解耦最彻底；测试性极佳（因为输入输出都是纯数据）；生态系统完善（IDE 插件、日志工具）。
+
+缺点: 样板代码较多（虽然 Cubit 简化了很多）；对于简单页面来说显得“过度设计”；新手上手门槛稍高。
+
 ### 🔥[Provider](https://pub.dev/packages/provider) 2018年10月19日-
 
 对 InheritedWidget/ScopedModel 的彻底简化和优化，因其简洁性和高性能迅速普及，成为 Flutter 官方推荐的方案之一。
 
+优点: 简单易学；不仅是状态管理，更是依赖注入 (DI) 工具；与 Flutter 原生 API 贴合度高。
+
+缺点: 严重依赖 BuildContext；不是编译时安全的（如果树中没有对应的 Provider，会抛出运行时错误
+ProviderNotFoundException）；监听机制相对粗糙（Consumer 有时会写得比较繁琐）。
+
 ### 🔥[Flutter Hooks](https://pub.dev/packages/flutter_hooks) 2018年12月17日-
 
 引入 React Hooks 概念，用于简化 StatefulWidget，解决单个 Widget 内部的本地状态和生命周期管理。
+
+优点: 消灭 StatefulWidget 样板代码；逻辑复用性极强（可以将 controller 的创建、销毁逻辑封装在一个 hook 函数中）；UI 代码非常紧凑。
+
+缺点: “黑魔法”（违背了 Flutter 显式的 Widget 构建逻辑）；严重依赖 Hook 的调用顺序（不能在条件判断中使用）；增加了团队理解成本。
 
 ### 🪦[MobX](https://pub.dev/packages/mobx) 2018年12月27日-2024年12月16日
 
@@ -42,14 +55,33 @@ tags:
 
 但是实际开发中,因为getx内部长期持有context,导致带来了很多问题,已经不用很久了,也不记得会导致哪些问题.
 
+优点: 开发速度快，代码行数少；功能全面（"瑞士军刀"）。
+
+缺点:
+
+- Context 滥用与内存泄漏: GetX 经常宣传 "不需要 Context"。实际上，它通过全局变量持有了
+  Context/NavigatorState。这导致Controller 的生命周期与 Widget 树脱钩。如果在页面销毁后，异步任务尝试通过 GetX 操作 UI（例如显示
+  Dialog），可能会引用已销毁的 Context，导致崩溃或内存泄漏。
+- 反模式 (Anti-patterns): 它是全局可变状态的集合，这让单元测试变得非常困难（因为难以隔离测试环境）；自定义的路由管理（Get.to）脱离了
+  Flutter 原生路由体系，导致与 Deep Linking 或其他路由库集成时出现各种 Bug。
+- 维护风险: 作者经常在没有详细 Changelog 的情况下引入破坏性更新，且长期由单人主导，社区协作性差。
+
 ### 🔥[Riverpod](https://pub.dev/packages/riverpod) 2020年6月23日-
 
 Provider 的彻底重构。它解决了 Provider 在编译时安全性和测试方面的痛点，并消除了对 BuildContext 的依赖，被许多人认为是下一代状态管理的首选。
+
+优点: 编译时安全（不会出现 ProviderNotFoundException）；不依赖 BuildContext（可以在纯 Dart
+逻辑中使用）；对异步数据（AsyncValue）的处理极其优雅；自动处理状态销毁和缓存。
 
 ### 🔥[Signals](https://pub.dev/packages/signals) 2023年11月27日-
 
 Signals 是 Flutter/Dart 状态管理领域一个相对较新的、极具影响力的概念，它借鉴了 SolidJS 和 Preact Signals 等响应式框架的设计理念。
 它的目标是提供一种极简、高性能的状态管理方式，实现精细化响应式 (Fine-Grained Reactivity)。
+
+底层实现: 基于 DAG (有向无环图) 追踪依赖关系。当一个 Signal 变化时，只有依赖它的计算属性或 Effect 会重新运行。在 Flutter
+中，通常配合 Watch Widget 使用。
+
+优点: 性能极高（实现真正的细粒度更新，例如只更新 Text 组件中的字符串，而不重建整个组件树）；API 简单直观；自动依赖追踪（无需手动声明监听）。
 
 ## 数据库
 
