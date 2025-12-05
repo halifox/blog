@@ -1,6 +1,6 @@
 ---
-title: Flutter 公告渠道
-createTime: 2025/11/28 10:05:48
+title: Flutter 官方信息渠道汇总与内容要点
+createTime: 2025/12/05 00:00:00
 permalink: /blog/fvvysa2c/
 tags:
   - flutter
