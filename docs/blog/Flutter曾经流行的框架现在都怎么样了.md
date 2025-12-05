@@ -33,14 +33,6 @@ tags:
 缺点: 严重依赖 BuildContext；不是编译时安全的（如果树中没有对应的 Provider，会抛出运行时错误
 ProviderNotFoundException）；监听机制相对粗糙（Consumer 有时会写得比较繁琐）。
 
-### 🔥[Flutter Hooks](https://pub.dev/packages/flutter_hooks) 2018年12月17日-
-
-引入 React Hooks 概念，用于简化 StatefulWidget，**解决单个 Widget 内部的本地状态和生命周期管理**。
-
-优点: 消灭 StatefulWidget 样板代码；逻辑复用性极强（可以将 controller 的创建、销毁逻辑封装在一个 hook 函数中）；UI 代码非常紧凑。
-
-缺点: “黑魔法”（违背了 Flutter 显式的 Widget 构建逻辑）；严重依赖 Hook 的调用顺序（不能在条件判断中使用）；增加了团队理解成本。
-
 ### 🪦[MobX](https://pub.dev/packages/mobx) 2018年12月27日-2024年12月16日
 
 从 JavaScript 生态移植，采用响应式 (Observable) 编程模型，通过代码生成简化了状态管理。
@@ -80,6 +72,20 @@ Signals 是 Flutter/Dart 状态管理领域一个相对较新的、极具影响�
 中，通常配合 Watch Widget 使用。
 
 优点: 性能极高（实现真正的细粒度更新，例如只更新 Text 组件中的字符串，而不重建整个组件树）；API 简单直观；自动依赖追踪（无需手动声明监听）。
+
+### 🔥[Flutter Hooks](https://pub.dev/packages/flutter_hooks) 2018年12月17日-
+
+引入 React Hooks 概念，用于简化 StatefulWidget，**解决单个 Widget 内部的本地状态和生命周期管理**。
+
+flutter_hooks 的出现，使得所有基于 StatefulWidget 模式的框架，都面临着向**“函数式/声明式”**转变的压力。
+
+Riverpod 官方推荐使用 hooks_riverpod 包。
+
+BLoC 社区也提供了 flutter_bloc 的 Hooks 扩展。
+
+优点: 消灭 StatefulWidget 样板代码；逻辑复用性极强（可以将 controller 的创建、销毁逻辑封装在一个 hook 函数中）；UI 代码非常紧凑。
+
+缺点: “黑魔法”（违背了 Flutter 显式的 Widget 构建逻辑）；严重依赖 Hook 的调用顺序（不能在条件判断中使用）；增加了团队理解成本。
 
 ### 我的点评
 
