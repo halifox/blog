@@ -55,7 +55,7 @@ ProviderNotFoundException）；监听机制相对粗糙（Consumer 有时会写�
 
 优点: 开发速度快，代码行数少；功能全面（"瑞士军刀"）。
 
-缺点: 
+缺点:
 
 - Context 滥用与内存泄漏: GetX 经常宣传 "不需要 Context"。实际上，它通过全局变量持有了
   Context/NavigatorState。这导致Controller 的生命周期与 Widget 树脱钩。如果在页面销毁后，异步任务尝试通过 GetX 操作 UI（例如显示
@@ -80,6 +80,42 @@ Signals 是 Flutter/Dart 状态管理领域一个相对较新的、极具影响�
 中，通常配合 Watch Widget 使用。
 
 优点: 性能极高（实现真正的细粒度更新，例如只更新 Text 组件中的字符串，而不重建整个组件树）；API 简单直观；自动依赖追踪（无需手动声明监听）。
+
+### 关于状态管理框架我的一些想法
+
+**细粒度的自动依赖追踪**是未来的方向，它消除了“为了连接状态和 UI 而写的样板代码”
+
+#### 一. "Composition over Inheritance" (组合优于继承)
+
+`BlocBuilder` (组合/嵌套) 比 `extends ConsumerWidget` (继承/侵入) 更好
+
+低侵入性：使用 Builder 模式（如 BlocBuilder 或 Consumer），你的 Widget 依然是一个纯粹的 StatelessWidget。这意味着该 Widget
+的其余部分与特定框架解耦，迁移或复用更容易。
+
+局部性：Builder 明确地圈定了“哪里需要重绘”。你看一眼代码就知道，只有包裹在 builder 里的那几行代码会动，而不是整个 Widget 类。
+
+显式的范围控制，而不是隐式的全局/类级别注入，这符合 Flutter 官方推荐的思维模式。
+
+#### 二. 依赖追踪：自动识别 (Auto-detect) vs 手动声明 (Manual Declaration)
+
+`Watch()` 自动追踪状态，远胜于 `BlocBuilder<Bloc, State>` 的手动泛型声明。
+
+BLoC/Provider 不仅要写泛型，还要写 equatable 来比较 props，或者写 listenWhen/buildWhen 来过滤。这属于“命令式”的优化。
+
+心智负担极低。你不需要告诉框架“由于 A 变了所以更新 B”，你只需要“使用 A”，框架会自动建立依赖关系。
+
+这种模式在前端界（React Preact Signals, SolidJS, Vue）已经赢了。
+
+#### 三. 细粒度更新 vs 代码拆分成本
+
+性能优化的悖论：Flutter 官方说“只重建或更新 UI 中真正发生变化的那一小部分”。但现实中，业务逻辑一变，你发现原先拆分的小
+Widget 需要多传一个参数，或者原先的 BlocBuilder 需要监听一个新的 State。
+
+重构地狱：BLoC：如果你的 UI 突然需要展示 UserBloc 和 OrderBloc 的数据，你得把原本的 BlocBuilder<UserBloc...> 改成
+MultiBlocBuilder 或者嵌套，泛型改来改去，非常痛苦。
+
+重构地狱：Riverpod：虽然 ref.watch 解决了组合问题，但为了性能（避免整个页面重绘），你还是得把局部 UI 拆成单独的 Widget
+类（ConsumerWidget），这增加了文件数量和代码跳转难度。
 
 ## 数据库
 
