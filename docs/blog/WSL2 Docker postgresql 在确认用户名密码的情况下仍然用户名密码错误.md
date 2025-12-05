@@ -1,6 +1,6 @@
 ---
 title: WSL2 Docker postgresql 在确认用户名密码的情况下仍然用户名密码错误
-createTime: 2025/12/01 16:42:29
+createTime: 2025/01/01 00:00:00
 permalink: /blog/ol37x96n/
 tags:
   - wsl

@@ -1,6 +1,6 @@
 ---
 title: VMware 安装 ESXi 在此主机上不支持嵌套虚拟化
-createTime: 2025/12/01 17:20:17
+createTime: 2025/01/02 00:00:00
 permalink: /blog/k2127u66/
 tags:
   - VMware

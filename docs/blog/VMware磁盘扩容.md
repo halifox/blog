@@ -1,6 +1,6 @@
 ---
 title: VMware 磁盘扩容
-createTime: 2025/12/01 17:20:45
+createTime: 2025/01/02 00:00:00
 permalink: /blog/5w36ovkb/
 tags:
   - VMware

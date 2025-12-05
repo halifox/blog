@@ -1,6 +1,6 @@
 ---
 title: WSL2 无法 ping 内网和外网
-createTime: 2025/11/04 20:40:15
+createTime: 2025/01/01 00:00:00
 permalink: /blog/6c7z4oaj/
 tags:
   - wsl

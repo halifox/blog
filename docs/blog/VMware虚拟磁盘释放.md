@@ -1,6 +1,6 @@
 ---
 title: VMware虚拟磁盘释放
-createTime: 2025/12/01 17:29:49
+createTime: 2025/01/02 00:00:00
 permalink: /blog/p1nz9lvq/
 tags:
   - VMware

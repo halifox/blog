@@ -1,6 +1,6 @@
 ---
 title: VMware 能识别 USB 设备，但无法连接（灰色）的问题解决办法
-createTime: 2025/12/01 17:21:00
+createTime: 2025/01/02 00:00:00
 permalink: /blog/p3q7u3t9/
 tags:
   - VMware

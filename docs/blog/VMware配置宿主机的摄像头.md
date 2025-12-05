@@ -1,6 +1,6 @@
 ---
 title: VMware配置宿主机的摄像头
-createTime: 2025/12/01 17:26:53
+createTime: 2025/01/02 00:00:00
 permalink: /blog/q6wgq67z/
 tags:
   - VMware
