@@ -35,7 +35,7 @@ ProviderNotFoundException）；监听机制相对粗糙（Consumer 有时会写�
 
 ### 🔥[Flutter Hooks](https://pub.dev/packages/flutter_hooks) 2018年12月17日-
 
-引入 React Hooks 概念，用于简化 StatefulWidget，解决单个 Widget 内部的本地状态和生命周期管理。
+引入 React Hooks 概念，用于简化 StatefulWidget，**解决单个 Widget 内部的本地状态和生命周期管理**。
 
 优点: 消灭 StatefulWidget 样板代码；逻辑复用性极强（可以将 controller 的创建、销毁逻辑封装在一个 hook 函数中）；UI 代码非常紧凑。
 
@@ -81,11 +81,11 @@ Signals 是 Flutter/Dart 状态管理领域一个相对较新的、极具影响�
 
 优点: 性能极高（实现真正的细粒度更新，例如只更新 Text 组件中的字符串，而不重建整个组件树）；API 简单直观；自动依赖追踪（无需手动声明监听）。
 
-### 关于状态管理框架我的一些想法
+### 我的点评
 
 **细粒度的自动依赖追踪**是未来的方向，它消除了“为了连接状态和 UI 而写的样板代码”
 
-#### 一. "Composition over Inheritance" (组合优于继承)
+#### "Composition over Inheritance" (组合优于继承)
 
 `BlocBuilder` (组合/嵌套) 比 `extends ConsumerWidget` (继承/侵入) 更好
 
@@ -96,7 +96,7 @@ Signals 是 Flutter/Dart 状态管理领域一个相对较新的、极具影响�
 
 显式的范围控制，而不是隐式的全局/类级别注入，这符合 Flutter 官方推荐的思维模式。
 
-#### 二. 依赖追踪：自动识别 (Auto-detect) vs 手动声明 (Manual Declaration)
+#### 依赖追踪：自动识别 (Auto-detect) vs 手动声明 (Manual Declaration)
 
 `Watch()` 自动追踪状态，远胜于 `BlocBuilder<Bloc, State>` 的手动泛型声明。
 
@@ -106,7 +106,7 @@ BLoC/Provider 不仅要写泛型，还要写 equatable 来比较 props，或者�
 
 这种模式在前端界（React Preact Signals, SolidJS, Vue）已经赢了。
 
-#### 三. 细粒度更新 vs 代码拆分成本
+#### 细粒度更新 vs 代码拆分成本
 
 性能优化的悖论：Flutter 官方说“只重建或更新 UI 中真正发生变化的那一小部分”。但现实中，业务逻辑一变，你发现原先拆分的小
 Widget 需要多传一个参数，或者原先的 BlocBuilder 需要监听一个新的 State。
