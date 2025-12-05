@@ -95,32 +95,32 @@ BLoC 社区也提供了 flutter_bloc 的 Hooks 扩展。
 
 `BlocBuilder` (组合/嵌套) 比 `extends ConsumerWidget` (继承/侵入) 更好
 
-低侵入性：使用 Builder 模式（如 BlocBuilder 或 Consumer），你的 Widget 依然是一个纯粹的 StatelessWidget。这意味着该 Widget
+* 低侵入性：使用 Builder 模式（如 BlocBuilder 或 Consumer），你的 Widget 依然是一个纯粹的 StatelessWidget。这意味着该 Widget
 的其余部分与特定框架解耦，迁移或复用更容易。
 
-局部性：Builder 明确地圈定了“哪里需要重绘”。你看一眼代码就知道，只有包裹在 builder 里的那几行代码会动，而不是整个 Widget 类。
+* 局部性：Builder 明确地圈定了“哪里需要重绘”。你看一眼代码就知道，只有包裹在 builder 里的那几行代码会动，而不是整个 Widget 类。
 
-显式的范围控制，而不是隐式的全局/类级别注入，这符合 Flutter 官方推荐的思维模式。
+* 显式的范围控制，而不是隐式的全局/类级别注入，这符合 Flutter 官方推荐的思维模式。
 
 #### 依赖追踪：自动识别 (Auto-detect) vs 手动声明 (Manual Declaration)
 
 `Watch()` 自动追踪状态，远胜于 `BlocBuilder<Bloc, State>` 的手动泛型声明。
 
-BLoC/Provider 不仅要写泛型，还要写 equatable 来比较 props，或者写 listenWhen/buildWhen 来过滤。这属于“命令式”的优化。
+* BLoC/Provider 不仅要写泛型，还要写 equatable 来比较 props，或者写 listenWhen/buildWhen 来过滤。这属于“命令式”的优化。
 
-心智负担极低。你不需要告诉框架“由于 A 变了所以更新 B”，你只需要“使用 A”，框架会自动建立依赖关系。
+* 心智负担极低。你不需要告诉框架“由于 A 变了所以更新 B”，你只需要“使用 A”，框架会自动建立依赖关系。
 
-这种模式在前端界（React Preact Signals, SolidJS, Vue）已经赢了。
+* 这种模式在前端界（React Preact Signals, SolidJS, Vue）已经赢了。
 
 #### 细粒度更新 vs 代码拆分成本
 
-性能优化的悖论：Flutter 官方说“只重建或更新 UI 中真正发生变化的那一小部分”。但现实中，业务逻辑一变，你发现原先拆分的小
+* 性能优化的悖论：Flutter 官方说“只重建或更新 UI 中真正发生变化的那一小部分”。但现实中，业务逻辑一变，你发现原先拆分的小
 Widget 需要多传一个参数，或者原先的 BlocBuilder 需要监听一个新的 State。
 
-重构地狱：BLoC：如果你的 UI 突然需要展示 UserBloc 和 OrderBloc 的数据，你得把原本的 BlocBuilder<UserBloc...> 改成
+* 重构地狱：BLoC：如果你的 UI 突然需要展示 UserBloc 和 OrderBloc 的数据，你得把原本的 BlocBuilder<UserBloc...> 改成
 MultiBlocBuilder 或者嵌套，泛型改来改去，非常痛苦。
 
-重构地狱：Riverpod：虽然 ref.watch 解决了组合问题，但为了性能（避免整个页面重绘），你还是得把局部 UI 拆成单独的 Widget
+* 重构地狱：Riverpod：虽然 ref.watch 解决了组合问题，但为了性能（避免整个页面重绘），你还是得把局部 UI 拆成单独的 Widget
 类（ConsumerWidget），这增加了文件数量和代码跳转难度。
 
 ## 数据库
@@ -195,7 +195,7 @@ Flutter 社区中最常用、最流行的 SQLite 插件。它提供了类似 And
 
 ### 点评
 
-#### 使用 sqlite 为底层的库
+#### 使用 SQLite 为底层的库
 
 SQLite 作为最老牌、最成熟的嵌入式数据库，其底层引擎久经考验，完整支持 ACID 事务特性，是数据持久化的工业标准。其可靠性在所有主流平台（包括 Web 端的 SQL.js）上得到了验证。
 
