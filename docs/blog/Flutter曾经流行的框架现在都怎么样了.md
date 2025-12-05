@@ -53,11 +53,9 @@ ProviderNotFoundException）；监听机制相对粗糙（Consumer 有时会写�
 
 以其一体化（状态、路由、依赖注入）和极简 API 迅速在全球范围内获得大量用户，尤其受到追求开发效率的开发者喜爱。
 
-但是实际开发中,因为getx内部长期持有context,导致带来了很多问题,已经不用很久了,也不记得会导致哪些问题.
-
 优点: 开发速度快，代码行数少；功能全面（"瑞士军刀"）。
 
-缺点:
+缺点: 
 
 - Context 滥用与内存泄漏: GetX 经常宣传 "不需要 Context"。实际上，它通过全局变量持有了
   Context/NavigatorState。这导致Controller 的生命周期与 Widget 树脱钩。如果在页面销毁后，异步任务尝试通过 GetX 操作 UI（例如显示
