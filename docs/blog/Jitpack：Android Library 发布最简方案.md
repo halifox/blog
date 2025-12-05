@@ -1,5 +1,5 @@
 ---
-title: 在Jitpack上发布Android包
+title: Jitpack：Android Library 发布最简方案
 createTime: 2025/10/03 00:00:00
 permalink: /blog/79h6phn8/
 tags:

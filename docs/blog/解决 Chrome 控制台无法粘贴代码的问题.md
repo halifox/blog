@@ -1,5 +1,5 @@
 ---
-title: Chrome无法在控制台中粘贴代码
+title: 解决 Chrome 控制台无法粘贴代码的问题
 createTime: 2025/10/04 00:00:00
 permalink: /blog/l3m5uqyy/
 tags:

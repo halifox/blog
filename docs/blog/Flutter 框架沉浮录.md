@@ -1,5 +1,5 @@
 ---
-title: Flutter曾经流行的框架现在都怎么样了
+title: Flutter 框架沉浮录：那些年流行的 State Management 如今安在？
 createTime: 2025/12/05 00:00:00
 permalink: /blog/1qiao7iq/
 tags:
