@@ -96,9 +96,10 @@ BLoC 社区也提供了 flutter_bloc 的 Hooks 扩展。
 `BlocBuilder` (组合/嵌套) 比 `extends ConsumerWidget` (继承/侵入) 更好
 
 * 低侵入性：使用 Builder 模式（如 BlocBuilder 或 Consumer），你的 Widget 依然是一个纯粹的 StatelessWidget。这意味着该 Widget
-的其余部分与特定框架解耦，迁移或复用更容易。
+  的其余部分与特定框架解耦，迁移或复用更容易。
 
-* 局部性：Builder 明确地圈定了“哪里需要重绘”。你看一眼代码就知道，只有包裹在 builder 里的那几行代码会动，而不是整个 Widget 类。
+* 局部性：Builder 明确地圈定了“哪里需要重绘”。你看一眼代码就知道，只有包裹在 builder 里的那几行代码会动，而不是整个 Widget
+  类。
 
 * 显式的范围控制，而不是隐式的全局/类级别注入，这符合 Flutter 官方推荐的思维模式。
 
@@ -115,13 +116,13 @@ BLoC 社区也提供了 flutter_bloc 的 Hooks 扩展。
 #### 细粒度更新 vs 代码拆分成本
 
 * 性能优化的悖论：Flutter 官方说“只重建或更新 UI 中真正发生变化的那一小部分”。但现实中，业务逻辑一变，你发现原先拆分的小
-Widget 需要多传一个参数，或者原先的 BlocBuilder 需要监听一个新的 State。
+  Widget 需要多传一个参数，或者原先的 BlocBuilder 需要监听一个新的 State。
 
 * 重构地狱：BLoC：如果你的 UI 突然需要展示 UserBloc 和 OrderBloc 的数据，你得把原本的 BlocBuilder<UserBloc...> 改成
-MultiBlocBuilder 或者嵌套，泛型改来改去，非常痛苦。
+  MultiBlocBuilder 或者嵌套，泛型改来改去，非常痛苦。
 
 * 重构地狱：Riverpod：虽然 ref.watch 解决了组合问题，但为了性能（避免整个页面重绘），你还是得把局部 UI 拆成单独的 Widget
-类（ConsumerWidget），这增加了文件数量和代码跳转难度。
+  类（ConsumerWidget），这增加了文件数量和代码跳转难度。
 
 ## 数据库
 
@@ -197,18 +198,48 @@ Flutter 社区中最常用、最流行的 SQLite 插件。它提供了类似 And
 
 #### 使用 SQLite 为底层的库
 
-SQLite 作为最老牌、最成熟的嵌入式数据库，其底层引擎久经考验，完整支持 ACID 事务特性，是数据持久化的工业标准。其可靠性在所有主流平台（包括 Web 端的 SQL.js）上得到了验证。
+SQLite 作为最老牌、最成熟的嵌入式数据库，其底层引擎久经考验，完整支持 ACID 事务特性，是数据持久化的工业标准。其可靠性在所有主流平台（包括
+Web 端的 SQL.js）上得到了验证。
 
-SQL 语言是跨平台开发者的通用语言，iOS/Android 开发者对其高度熟悉，极大降低了学习和迁移成本。同时，SQLite 拥有丰富的第三方调试工具和数据查看器，调试和维护成本极低。
+SQL 语言是跨平台开发者的通用语言，iOS/Android 开发者对其高度熟悉，极大降低了学习和迁移成本。同时，SQLite
+拥有丰富的第三方调试工具和数据查看器，调试和维护成本极低。
 
 长远来看，选择基于 SQLite 的方案（如 drift 或 sqflite）是追求 **架构稳健性** 和 **低技术锁定风险** 的最佳战略选择。
 
 #### 自研/NoSQL 数据库的风险评估
 
-不可否认，Isar、ObjectBox、Realm 等现代数据库提供了极其便捷的开发体验和对象模型封装（如 Isar 的 @Collection 标注）。在纯粹的开发速度和特定场景的读写性能上，它们往往表现优异。
+不可否认，Isar、ObjectBox、Realm 等现代数据库提供了极其便捷的开发体验和对象模型封装（如 Isar 的 @Collection
+标注）。在纯粹的开发速度和特定场景的读写性能上，它们往往表现优异。
 
-这类自研或专用底层核心的数据库（如 Isar 的 C 核心，ObjectBox 的自研存储引擎）存在巨大的 技术锁定风险 (Vendor Lock-in Risk)。其底层机制对于大多数开发者而言是 不透明的黑盒。
+这类自研或专用底层核心的数据库（如 Isar 的 C 核心，ObjectBox 的自研存储引擎）存在巨大的 技术锁定风险 (Vendor Lock-in Risk)
+。其底层机制对于大多数开发者而言是 不透明的黑盒。
 
 Isar 原作者停止积极维护正是这一风险的有力证明。一旦核心维护者或公司放弃，社区接管难度极高，项目将面临高风险的技术停滞或弃用。
 
 如果项目对 长期可持续性 和 技术栈通用性 要求较高，应警惕使用这类非标准化底层数据库带来的 核心维护依赖风险 。
+
+## 依赖注入
+
+### 🪦[kiwi](https://pub.dev/packages/kiwi) 2018年9月9日-2024年7月22日
+
+### 🔥[get_it](https://pub.dev/packages/get_it) 2018年5月22日-
+
+get_it 是 Dart 和 Flutter 社区中一个高度流行且备受推崇的服务定位器（Service Locator）。
+它致力于提供一种简单、快速、类型安全的方式来管理应用程序中的依赖项（服务、模型和业务逻辑），并实现代码解耦。
+
+原理： get_it 扮演一个全局的中央注册表（Service Locator）。
+开发者在应用程序启动时，将所有服务及其创建方法（工厂）注册到这个中央注册表中。当应用程序的任何部分需要某个服务时，它就向这个定位器请求（“定位”）所需的实例。
+
+### 🔥[injectable](https://pub.dev/packages/injectable) 2020年1月28日-
+
+injectable 并不是一个独立的依赖注入（DI）解决方案，而是为 get_it 量身定制的“代码生成器”，
+旨在将 get_it 的服务定位器（Service Locator）模式提升到基于注解和编译时检查的依赖注入容器的水平。
+
+它极大地简化了 get_it 的手动注册流程，将大部分样板代码工作交给了机器处理。
+
+## 网络请求
+
+## 序列化
+
+## 多语言
+
