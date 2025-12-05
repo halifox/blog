@@ -1,6 +1,6 @@
 ---
-title: 在Jitpack上发布包
-createTime: 2025/01/03 00:00:00
+title: 在Jitpack上发布Android包
+createTime: 2025/10/03 00:00:00
 permalink: /blog/79h6phn8/
 tags:
   - Jitpack

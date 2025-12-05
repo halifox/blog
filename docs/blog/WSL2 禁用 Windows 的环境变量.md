@@ -1,6 +1,6 @@
 ---
 title: WSL2 禁用 Windows 的环境变量
-createTime: 2025/01/03 00:00:00
+createTime: 2025/10/02 00:00:00
 permalink: /blog/gc06pgcq/
 tags:
   - wsl

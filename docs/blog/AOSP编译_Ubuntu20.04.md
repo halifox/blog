@@ -1,6 +1,6 @@
 ---
 title: AOSP 9.0.0 编译与模拟器运行指南（Ubuntu 20.04）
-createTime: 2025/12/02 09:25:34
+createTime: 2025/10/05 00:00:00
 permalink: /blog/38hrmb7t/
 ---
 

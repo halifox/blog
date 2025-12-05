@@ -1,6 +1,6 @@
 ---
 title: "WSL2 错误代码: 灾难性故障:Wsl/Service/E_UNEXPECTED"
-createTime: 2025/01/03 00:00:00
+createTime: 2025/10/02 00:00:00
 permalink: /blog/jbb6btjs/
 tags:
   - wsl
