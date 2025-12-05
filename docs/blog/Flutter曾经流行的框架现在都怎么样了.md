@@ -57,7 +57,16 @@ Signals 是 Flutter/Dart 状态管理领域一个相对较新的、极具影响�
 
 Flutter 社区中最常用、最流行的 SQLite 插件。它提供了类似 Android 中 SQLiteOpenHelper 的 API 接口，用于执行原始 SQL 命令。
 
-### 🔥[floor](https://pub.dev/packages/floor) 2019年3月9日-
+底层实现:   
+利用 Flutter 的 Platform Channels (平台通道) 调用 Android 和 iOS 原生的 SQLite API   
+在 Web 和桌面端（Windows/Linux/macOS）通常需要配合 sqflite_common_ffi 使用，通过 FFI (外部函数接口) 调用 SQLite 库。
+
+优点: 生态系统极其成熟，稳定性高；标准 SQL 语法，学习成本低；大量现成的 SQL 教程和资源可用。
+
+缺点: 需要手写 SQL 语句，容易出现拼写错误且仅在运行时发现（非类型安全）；由于使用 Platform Channels，大量数据传输时可能存在性能瓶颈（FFI
+版本稍好）；样板代码（Boilerplate）较多。
+
+### 🧊[floor](https://pub.dev/packages/floor)不活跃 2019年3月9日-2024年5月8日
 
 一个健壮的对象关系映射 (ORM) 库，它基于 sqflite。
 它允许您使用 Dart 对象和注解来定义数据模型和数据库操作，无需手写大量 SQL，类似于 Android 的 Room 库。
@@ -66,26 +75,48 @@ Flutter 社区中最常用、最流行的 SQLite 插件。它提供了类似 And
 
 另一个功能强大的 ORM 库，它也基于 sqflite。它提供类型安全的 SQL 查询和强大的代码生成功能，支持 Dart Streams 以监听数据变化。
 
+### 🪦[hive](https://pub.dev/packages/hive) 2019年6月18日-2022年6月30日
+
+一个轻量级、快速的键值对和NoSQL数据库，不需要原生依赖。它非常适合存储简单对象和大量数据。易于使用，但不支持复杂的查询。
+
+底层实现: 纯 Dart 实现的追加型（Append-only）文件系统。数据以二进制形式存储在单个文件中。
+
+优点: 无原生依赖（纯 Dart，不增加包体积，随处运行）；API 极其简单（类似 Map）；读写速度快。
+
+缺点: 内存占用高（默认需将整个 Box 的索引/Key 加载到 RAM 中，不适合大数据量）；查询功能非常弱。
+
 ### 🪦[isar](https://pub.dev/packages/isar) 2020年6月5日-2023年4月25日
 
 高性能、跨平台的 NoSQL 数据库。它被设计为现代 Flutter 应用的首选数据库，提供零拷贝序列化和强大的查询功能，速度非常快。
 
+底层实现: 基于 C++ 编写的定制核心 (基于 MDBX)，通过 Dart FFI 直接调用。
+
+优点: 速度极快（尤其是读取）；拥有出色的查询 API（组合查询、全文搜索）；支持 ACID 事务；API 设计非常现代且易用。
+
 ### 🧊[isar_community](https://pub.dev/packages/isar_community) 不活跃 2025年8月12日-
 
-原版的 Isar 库在一段时间内,更新和维护出现停滞,Flutter 社区中的其他开发者接手并创建及其相关的依赖包,但是维护不活跃
+原版的 Isar 库在一段时间内,更新和维护出现停滞,Flutter 社区中的其他开发者接手并创建及其相关的依赖包
 
-### 🪦[hive](https://pub.dev/packages/hive) 2019年6月18日-2022年6月30日
-
-一个轻量级、快速的键值对和NoSQL数据库，不需要原生依赖。它非常适合存储简单对象和大量数据。易于使用，但不支持复杂的查询。
+社区尝试修复原版 Isar 在新版 Flutter/Dart 中的构建错误。目前仍不活跃，且由不同的社区成员零散维护，稳定性和长期支持存在巨大风险，生产环境慎用。
 
 ### 🔥[sembast](https://pub.dev/packages/sembast) 2014年12月17日-
 
 一个NoSQL 文档存储数据库，基于 Dart 编写，支持 Web 和原生平台。它提供灵活的查询功能。
 
+底层实现: 纯 Dart 实现。通常将数据以 JSON 格式（或其他编码）写入文件。支持在内存中运行。
+
+优点: 纯 Dart（无原生桥接问题）；极其灵活；支持事务；可以在任何 Dart 运行的地方运行；离线/单机应用非常可靠。
+
+缺点: 性能不如 C++底层库（如 Isar/ObjectBox/Realm）；大数据量下加载和查询较慢（通常需要将数据加载到内存中操作）。
+
 ### 🔥[ObjectBox](https://pub.dev/packages/ObjectBox) 2019年10月31日-
 
 一个高性能、ACID 兼容的嵌入式 NoSQL 数据库。它声称比 SQLite 更快，并提供直观的 Dart API 来直接存储对象，无需 SQL 或 ORM 转换。
 
+底层实现: 基于 C/C++ 编写的高性能核心，通过 Dart FFI 调用。
+
 ### 🔥[Realm](https://pub.dev/packages/Realm) 2023年2月7日-
 
 由 MongoDB 提供支持，是一个面向对象、移动优先的数据库。它以高性能和易用性著称，
+
+底层实现: 基于 C++ (Realm Core)，通过 Dart FFI 调用。
