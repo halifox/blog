@@ -87,7 +87,7 @@ BLoC 社区也提供了 flutter_bloc 的 Hooks 扩展。
 
 缺点: “黑魔法”（违背了 Flutter 显式的 Widget 构建逻辑）；严重依赖 Hook 的调用顺序（不能在条件判断中使用）；增加了团队理解成本。
 
-### 点评
+### halifox点评
 
 **细粒度的自动依赖追踪**是未来的方向，它消除了“为了连接状态和 UI 而写的样板代码”
 
@@ -194,7 +194,7 @@ Flutter 社区中最常用、最流行的 SQLite 插件。它提供了类似 And
 
 底层实现: 基于 C++ (Realm Core)，通过 Dart FFI 调用。
 
-### 点评
+### halifox点评
 
 #### 使用 SQLite 为底层的库
 
@@ -239,7 +239,7 @@ injectable 并不是一个独立的依赖注入（DI）解决方案，而是为 
 
 ## 网络请求
 
-### dart:io-HttpClient
+### 🔥dart:io HttpClient
 
 Dart 语言的标准库 dart:io 中提供的 HTTP 客户端。
 
@@ -271,17 +271,10 @@ Chopper 缺乏对文件上传/下载进度的原生支持，也不具备取消�
 
 ### 🔥[retrofit](https://pub.dev/packages/retrofit) 2019年4月7日-
 
-* 开发者只需定义抽象接口并使用注解（如 @GET, @POST, @Path, @Query）来描述 API 请求的细节，无需编写重复的 URL 拼接、参数绑定和请求执行代码。
-* 接口定义清晰地展示了应用的全部 API 端点，代码具有极高的可读性和可维护性。
-* 编译时的代码生成（build_runner）保证了 URL 路径、请求参数和返回类型的类型安全，减少了运行时错误。
-* Retrofit 默认使用 dio 作为底层 HTTP 客户端，因此自动获得了 dio 强大的拦截器系统。
-* 内置支持文件上传/下载进度监听、请求取消 (CancelToken)、全局配置超时和 Base URL。
-* 自动将 JSON 响应体反序列化为 Dart 对象，并在请求时将 Dart 对象序列化为 JSON，实现了从网络到数据模型的完全类型安全和自动化。
+它不仅在声明式接口定义上向 Android 的 Retrofit 看齐，更重要的是，它通过强大的代码生成，
+弥补了 Chopper 在自动化数据模型转换方面的缺失，实现了请求与结果的无缝序列化/反序列化。
 
 ## 序列化
-
-
-
 
 ## 多语言
 
