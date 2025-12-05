@@ -1,6 +1,6 @@
 ---
 title: Flutter Web 应用的 Cloudflare Pages 部署教程
-createTime: 2025/10/05 00:00:00
+createTime: 2025/12/05 00:00:00
 permalink: /blog/cynb75iz/
 tags:
   - Cloudflare
