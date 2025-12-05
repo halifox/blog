@@ -1,6 +1,6 @@
 ---
 title: WSL2 Docker 端口空闲但无法绑定
-createTime: 2025/01/01 00:00:00
+createTime: 2025/01/03 00:00:00
 permalink: /blog/2bsm802m/
 tags:
   - wsl

@@ -1,6 +1,6 @@
 ---
 title: 在Jitpack上发布包
-createTime: 2025/01/01 00:00:00
+createTime: 2025/01/03 00:00:00
 permalink: /blog/79h6phn8/
 tags:
   - Jitpack
