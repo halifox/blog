@@ -87,7 +87,7 @@ BLoC 社区也提供了 flutter_bloc 的 Hooks 扩展。
 
 缺点: “黑魔法”（违背了 Flutter 显式的 Widget 构建逻辑）；严重依赖 Hook 的调用顺序（不能在条件判断中使用）；增加了团队理解成本。
 
-### 拙见
+### 个人见解
 
 **细粒度的自动依赖追踪**是未来的方向，它消除了“为了连接状态和 UI 而写的样板代码”
 
@@ -194,7 +194,7 @@ Flutter 社区中最常用、最流行的 SQLite 插件。它提供了类似 And
 
 底层实现: 基于 C++ (Realm Core)，通过 Dart FFI 调用。
 
-### 拙见
+### 个人见解
 
 #### 使用 SQLite 为底层的库
 
@@ -274,9 +274,9 @@ Chopper 缺乏对文件上传/下载进度的原生支持，也不具备取消�
 它不仅在声明式接口定义上向 Android 的 Retrofit 看齐，更重要的是，它通过强大的代码生成，
 弥补了 Chopper 在自动化数据模型转换方面的缺失，实现了请求与结果的无缝序列化/反序列化。
 
-### 拙见
+### 个人见解
 
-我比较喜欢 retrofit
+我比较喜欢`retrofit`
 
 ## 序列化
 
@@ -312,6 +312,10 @@ built_value 通过强制性的设计模式（Builder）和特殊的不可变类�
 强制实现不可变性 (Immutability)，极大地减少了状态管理中的潜在 bug。自动生成 ==, hashCode, toString 和强大的 copyWith 方法。与 json_serializable 集成完美。
 
 实现原理和`built_value`差不多,但是 freezed 自动生成了 copyWith 方法，这是唯一“修改”不可变对象的途径。
+
+### 个人见解
+
+还是希望出现和`kotlinx.serialization`一样功能强大,多格式,不依赖反射,易用的序列化库
 
 ## 多语言
 
