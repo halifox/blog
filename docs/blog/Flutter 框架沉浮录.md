@@ -8,7 +8,7 @@ tags:
 
 ## 状态管理框架
 
-### 🪦[Scoped Model](https://pub.dev/packages/scoped_model/versions) 2017年8月17日-2022年8月24日
+### 🪦[Scoped Model](https://pub.dev/packages/scoped_model) 2017年8月17日-2022年8月24日
 
 早期流行,它的理念被后来的 Provider 吸收和取代
 
