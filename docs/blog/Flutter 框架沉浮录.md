@@ -87,7 +87,7 @@ BLoC 社区也提供了 flutter_bloc 的 Hooks 扩展。
 
 缺点: “黑魔法”（违背了 Flutter 显式的 Widget 构建逻辑）；严重依赖 Hook 的调用顺序（不能在条件判断中使用）；增加了团队理解成本。
 
-### halifox点评
+### 拙见
 
 **细粒度的自动依赖追踪**是未来的方向，它消除了“为了连接状态和 UI 而写的样板代码”
 
@@ -194,7 +194,7 @@ Flutter 社区中最常用、最流行的 SQLite 插件。它提供了类似 And
 
 底层实现: 基于 C++ (Realm Core)，通过 Dart FFI 调用。
 
-### halifox点评
+### 拙见
 
 #### 使用 SQLite 为底层的库
 
@@ -274,7 +274,44 @@ Chopper 缺乏对文件上传/下载进度的原生支持，也不具备取消�
 它不仅在声明式接口定义上向 Android 的 Retrofit 看齐，更重要的是，它通过强大的代码生成，
 弥补了 Chopper 在自动化数据模型转换方面的缺失，实现了请求与结果的无缝序列化/反序列化。
 
+### 拙见
+
+我比较喜欢 retrofit
+
 ## 序列化
+
+### [dart:convert](https://dart.dev/libraries/dart-convert)
+
+零依赖，Dart 标准库自带，简单快速，适用于极其简单的模型。
+
+手动编写 `toJson()` 和 `fromJson()` 属于样板代码，代码冗余、繁琐。模型一旦复杂，容易出错且难以维护。
+
+### [built_value](https://pub.dev/packages/built_value)
+
+提供了最严格的不可变保证，强大的集合（List/Map）支持，能够创建非常一致和可靠的数据模型。
+
+Dart 原生的 List 和 Map 是可变的。built_value 强制要求在模型中使用 BuiltList、BuiltMap 和 BuiltSet 这些专有的不可变集合类型。
+
+当你在 Builder 中操作集合时，你实际上操作的是一个临时的、可变的集合（例如，原生的 List），一旦调用 build() 方法，
+这些临时集合就会被锁定并转换为不可变的 BuiltList，附加到新的不可变模型实例上。
+
+built_value 会自动生成 == 运算符和 hashCode，它们会递归地比较对象的所有属性和内部集合的内容，确保只有当两个对象的内容完全相同时才被认为是相等的。
+
+由于模型不可变，你在代码库的任何地方传递数据时，都不必担心它会在不知情的情况下被另一个函数修改（即消除副作用），这极大地提高了代码的稳定性和可预测性，特别是在复杂的状态管理系统中。
+
+built_value 通过强制性的设计模式（Builder）和特殊的不可变类型（Built Collections），从根本上防止了数据变异，从而实现了最严格、最可靠的数据模型保证。    
+
+### [json_serializable](https://pub.dev/packages/json_serializable)
+
+自动化生成 fromJson() / toJson() 代码，极大地减少了开发工作量，高效且类型安全。通过注解（@JsonKey）可以灵活处理字段命名、默认值、忽略字段等复杂需求。
+    
+绝大多数 Flutter/Dart 生产级应用的首选。是实现序列化最平衡和推荐的方式。
+
+### [freezed](https://pub.dev/packages/freezed)
+
+强制实现不可变性 (Immutability)，极大地减少了状态管理中的潜在 bug。自动生成 ==, hashCode, toString 和强大的 copyWith 方法。与 json_serializable 集成完美。
+
+实现原理和`built_value`差不多,但是 freezed 自动生成了 copyWith 方法，这是唯一“修改”不可变对象的途径。
 
 ## 多语言
 
