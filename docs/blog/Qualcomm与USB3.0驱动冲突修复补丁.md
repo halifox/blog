@@ -1,5 +1,5 @@
 ---
-title: Qualcomm与USB3.0驱动冲突修复补丁
+title: 故障笔记：Qualcomm与USB3.0驱动冲突修复补丁
 createTime: 2025/10/05 00:00:00
 permalink: /blog/3ppxf5zi/
 ---

@@ -1,5 +1,5 @@
 ---
-title: VMware错误：指定的虚拟磁盘需要进行修复
+title: 故障笔记：VMware错误：指定的虚拟磁盘需要进行修复
 createTime: 2025/10/01 00:00:00
 permalink: /blog/h2uyfesi/
 tags:
